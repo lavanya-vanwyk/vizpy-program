@@ -13,7 +13,9 @@ The aim of this project was to build a program using the Matplotlib library and 
 * VS Code
 
 ## Running instructions
+[View/run code online on Replit](https://replit.com/@lavanyavanwyk1/pyadvancedfinalproject)
 
+### Local dir
 Clone the repository:
 
 `$ git clone https://github.com//lavanya-vanwyk/vizpy-program.git`
