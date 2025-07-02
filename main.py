@@ -1,4 +1,7 @@
 import csv
+import matplotlib.pyplot as plt
+
+population_per_continent = {}
 
 with open('data.csv', mode='r') as file:
   csvFile = csv.DictReader(file)
@@ -8,4 +11,10 @@ with open('data.csv', mode='r') as file:
     year = lines['year']
     population = lines['population']
 
-    print(f'The population in {continent} in the year {year}, was {population} people!')
+    if continent not in population_per_continent:
+      population_per_continent[continent] = {'population': [], 'years': []}
+
+    population_per_continent[continent]['population'].append(population)
+    population_per_continent[continent]['years'].append(year)
+
+print(population_per_continent)
