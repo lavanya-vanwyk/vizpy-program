@@ -36,7 +36,8 @@ class CreateGraph:
 
       plt.plot(years, population, label=continent, marker=".", alpha=0.5)
 
-    plt.title("Internet Population (per continent)")
+    plt.title("Internet Population (per continent)", fontsize=12)
+    plt.suptitle("VizPy - Data visualizer", fontsize=16)
     plt.xlabel("Year")
     plt.ylabel("Internet users (in millions)")
     plt.grid(True)
