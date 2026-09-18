@@ -1,0 +1,23 @@
+# Python and Environments
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+build/
+
+# Data and Database Artifacts
+data/
+*.duckdb
+*.duckdb.wal
+*.parquet
+*.csv
+
+# dbt Artifacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Testing and Coverage
+.pytest_cache/
+.ruff_cache/
+.coverage
