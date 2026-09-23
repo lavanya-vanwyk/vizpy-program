@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim_geography
+    description: "Geographic dimension mapping ISO codes to country names."
+    columns:
+      - name: geo_id
+        description: "Primary key for geography."
+        tests:
+          - unique
+          - not_null
+      - name: iso_code
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_time
+    description: "Time dimension for annual aggregations."
+    columns:
+      - name: time_id
+        description: "Primary key for time."
+        tests:
+          - unique
+          - not_null
+      - name: year
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_internet_adoption
+    description: "Fact table containing internet adoption metrics."
+    columns:
+      - name: fact_id
+        description: "Primary key for the fact record."
+        tests:
+          - unique
+          - not_null
+      - name: geo_id
+        description: "Foreign key mapping to dim_geography."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: geo_id
+      - name: time_id
+        description: "Foreign key mapping to dim_time."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_time')
+              field: time_id
