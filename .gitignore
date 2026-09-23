@@ -1,11 +1,11 @@
-# Python and Environments
+# Python & Environments
 __pycache__/
 *.py[cod]
 .venv/
 dist/
 build/
 
-# Data and Database Artifacts
+# Data & Database Artifacts
 data/
 *.duckdb
 *.duckdb.wal
@@ -17,7 +17,7 @@ dbt/target/
 dbt/dbt_packages/
 dbt/logs/
 
-# Testing and Coverage
+# Testing & Coverage
 .pytest_cache/
 .ruff_cache/
 .coverage

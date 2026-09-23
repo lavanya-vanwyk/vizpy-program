@@ -1,14 +1,15 @@
 import requests
-import pyarrow as pa
-import pyarrow.parquet as pq
-from pathlib import Path
+import pyarrow as pa  # type: ignore
+import pyarrow.parquet as pq  # type: ignore
+
+# from pathlib import Path
 from pydantic import ValidationError
 
 from src.contracts.population import PopulationRecord, QuarantineRecord
 
 
 class WorldBankExtractor:
-    BASE_URL = "http://api.worldbank.org/v2/country/all/indicator"
+    BASE_URL = "https://api.worldbank.org/v2/country/all/indicator"
 
     def __init__(self, start_year: int = 2000, end_year: int = 2023):
         self.start_year = start_year
