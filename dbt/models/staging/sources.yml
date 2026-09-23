@@ -6,4 +6,4 @@ sources:
     tables:
       - name: internet_usage
         meta:
-          external_location: "read_parquet('../data/bronze/internet_usage/*/*.parquet', hive_partitioning=1)"
+          external_location: "read_parquet('./data/bronze/internet_usage/*/*.parquet', hive_partitioning=1)"
