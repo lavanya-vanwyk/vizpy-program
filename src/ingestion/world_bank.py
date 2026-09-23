@@ -1,13 +1,14 @@
+"""
+NOTE TO SELF:
+Because Parquet is largely written in C and C++, the warning "Return type, dict[Unknown, Unknown], is partially unknown"
+happens because Pyright (or VS Code's Pylance language server) is running in strict mode,
+and the pyarrow package does not provide complete type stubs for the specific function or method you are calling.
+"""
+
 import pyarrow as pa  # type: ignore
 import pyarrow.parquet as pq  # type: ignore
 import requests
 
-"""
-NOTE TO SELF:
-Because Parquet is largely written in C and C++, the warning "Return type, dict[Unknown, Unknown], is partially unknown"
-happens because Pyright (or VS Code's Pylance language server) is running in strict mode, 
-and the pyarrow package does not provide complete type stubs for the specific function or method you are calling.
-"""
 # from pathlib import Path
 from pydantic import ValidationError
 
