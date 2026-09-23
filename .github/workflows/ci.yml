@@ -2,49 +2,37 @@ name: Data Pipeline CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
-  test-and-build:
+  build-and-test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+        with:
+          version: "latest"
+
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: 1.7.1
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      - name: Cache Poetry virtualenv
-        uses: actions/cache@v3
-        id: cached-poetry-dependencies
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+        run: uv python install 3.11
 
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
+        run: uv pip install --system -e . pydantic duckdb pyarrow requests dbt-duckdb prefect pytest ruff
 
-      - name: Lint with Ruff
-        run: poetry run ruff check .
+      - name: Run code formatting and linting
+        run: ruff check .
 
-      - name: Run Contract Unit Tests
-        run: poetry run pytest -v
+      - name: Run Python unit tests (Pydantic Contracts)
+        run: pytest -v
 
-      - name: Run E2E Integration (Ingest API -> Bronze Parquet)
-        run: poetry run python -m src.ingestion.world_bank
+      - name: Run E2E Integration - Ingest Bronze Data
+        run: python -m src.ingestion.world_bank
 
-      - name: Build and Test Silver/Gold Layers (dbt)
-        run: poetry run dbt build --project-dir dbt --profiles-dir dbt
+      - name: Run E2E Integration - dbt Build
+        run: dbt build --project-dir dbt --profiles-dir dbt
