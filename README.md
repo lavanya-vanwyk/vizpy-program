@@ -154,4 +154,8 @@ LIMIT 5;
 │   │   └── marts/                 # Gold layer (star schema)
 │   └── tests/                     # Singular business logic tests
 ├── pyproject.toml                 # Package definition & dependency constraints
-└── README.md                      
+└── README.md               
+
+
+*Bronze, Silver, and Gold for the win!*
+*WTC-JMMB3Z5Z*
