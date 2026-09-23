@@ -1,5 +1,7 @@
 import subprocess
-from prefect import task, flow, get_run_logger
+
+from prefect import flow, get_run_logger, task
+
 from src.ingestion.world_bank import WorldBankExtractor
 
 
