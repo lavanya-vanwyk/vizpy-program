@@ -1,0 +1,13 @@
+services:
+  pipeline:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: vizpy-program:latest
+    container_name: de_pipeline
+    volumes:
+      - .:/app
+    environment:
+      - PREFECT_API_URL=http://127.0.0.1:4200/api
+      - PYTHONUNBUFFERED=1
+    command: ["python", "-m", "src.orchestration.pipeline"]
