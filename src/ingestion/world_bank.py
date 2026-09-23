@@ -1,6 +1,6 @@
-import requests
 import pyarrow as pa  # type: ignore
 import pyarrow.parquet as pq  # type: ignore
+import requests
 
 # from pathlib import Path
 from pydantic import ValidationError

@@ -1,5 +1,6 @@
 import pytest
 from pydantic import ValidationError
+
 from src.contracts.population import PopulationRecord
 
 
@@ -35,12 +36,12 @@ def test_invalid_iso_code_fails():
     "bad_year",
     [1950, 2030],
 )
-def test_out_of_bounds_year_fails(bad_year):
+def test_out_of_bounds_year_fails(bad_year):  # type: ignore
     with pytest.raises(ValidationError) as exc:
         PopulationRecord(
             country_iso="USA",
             country_name="United States",
-            year=bad_year,
+            year=bad_year,  # type: ignore
             total_population=300_000_000,
             internet_users_pct=None,
         )
