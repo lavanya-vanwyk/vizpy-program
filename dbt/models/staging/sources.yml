@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: world_bank_bronze
+    description: "Raw ingested Parquet data from the World Bank API"
+    tables:
+      - name: internet_usage
+        meta:
+          external_location: "read_parquet('../data/bronze/internet_usage/*/*.parquet', hive_partitioning=1)"
