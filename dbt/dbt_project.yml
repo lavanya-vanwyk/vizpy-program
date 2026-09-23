@@ -1,0 +1,13 @@
+name: 'internet_adoption'
+version: '1.0.0'
+config-version: 2
+profile: 'internet_adoption'
+model-paths: ["models"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  internet_adoption:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
