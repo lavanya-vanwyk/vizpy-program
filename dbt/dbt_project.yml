@@ -3,6 +3,7 @@ version: '1.0.0'
 config-version: 2
 profile: 'internet_adoption'
 model-paths: ["models"]
+test-paths: ["tests"]
 clean-targets: ["target", "dbt_packages"]
 
 models:
