@@ -22,17 +22,19 @@ jobs:
       - name: Set up Python 3.11
         run: uv python install 3.11
 
-      - name: Install dependencies
-        run: uv pip install --system -e . pydantic duckdb pyarrow requests dbt-duckdb prefect pytest ruff
+      - name: Create venv and install dependencies
+        run: |
+          uv venv
+          uv pip install -e . pydantic duckdb pyarrow requests dbt-duckdb prefect pytest ruff
 
       - name: Run code formatting and linting
-        run: ruff check .
+        run: uv run ruff check .
 
       - name: Run Python unit tests (Pydantic Contracts)
-        run: pytest -v
+        run: uv run pytest -v
 
       - name: Run E2E Integration - Ingest Bronze Data
-        run: python -m src.ingestion.world_bank
+        run: uv run python -m src.ingestion.world_bank
 
       - name: Run E2E Integration - dbt Build
-        run: dbt build --project-dir dbt --profiles-dir dbt
+        run: uv run dbt build --project-dir dbt --profiles-dir dbt
