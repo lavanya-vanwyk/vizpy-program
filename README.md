@@ -1,4 +1,12 @@
 # VizPy: Global Internet Adoption ELT Pipeline
+![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![Pydantic](https://shields.io)](https://pydantic.dev)
+[![PyPI version](https://shields.io)](https://pypi.org)
+[![Parquet](https://shields.io)](https://parquet.apache.org/)
+[![Prefect](https://shields.io)](https://prefect.io)
+[![Ruff](https://shields.io)](https://github.com/astral-sh/ruff)
+
 
 An end-to-end Data Engineering ELT pipeline tracking global internet adoption and population growth, orchestrated with **Prefect**, transformed via **dbt** and **DuckDB**, and containerized for reproducibility.
 
