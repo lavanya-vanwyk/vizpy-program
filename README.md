@@ -58,14 +58,13 @@ flowchart TD
     style B fill:#CD7F32,stroke:#333,stroke-width:2px,color:#fff
     style C fill:#A8A8A8,stroke:#333,stroke-width:2px,color:#000
     style D fill:#FFD700,stroke:#333,stroke-width:2px,color:#000
-
 ```
 
 ---
 
 ## Data Quality Guarantees
 
-Data engineers are evaluated heavily on how they handle corrupted or malformed data. This pipeline implements a defense-in-depth approach:
+This pipeline implements a defense-in-depth approach:
 
 1. **Pre-Ingest Contracts (Pydantic):** Rejects anomalous API payloads (e.g., negative populations, out-of-bounds percentages, invalid ISO formats) before they hit the data lake, routing them to a Quarantine log instead of crashing the pipeline.
 2. **Structural Assertions (dbt):** Schema tests enforce Primary Key / Foreign Key uniqueness and referential integrity between fact and dimension tables.
@@ -82,11 +81,14 @@ You can run this pipeline in a completely isolated Docker container, or locally 
 You do not need Python installed on your host machine to run this.
 
 ```bash
-# 1. Clone the repository
-git clone [https://github.com/yourusername/internet-adoption-pipeline.git](https://github.com/yourusername/internet-adoption-pipeline.git)
-cd internet-adoption-pipeline
+# 1. Fork the repository
 
-# 2. Build the image and run the end-to-end pipeline
+# 2. Clone the repository
+
+git clone [https://github.com/yourusername/vizpy-program.git](https://github.com/yourusername/vizpy-program.git)
+cd vizpy-program
+
+# 3. Build the image and run the end-to-end pipeline
 docker compose up --build
 
 ```
